@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="menu-burger">
+        <span></span>
+    </div>
+    <style>
+        .menu-burger{
+    position: relative;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    top: -52px;
+    left: 210px;
+    border: 1px solid white;
+}
+.menu-burger span,
+.menu-burger span:before,
+.menu-burger span:after{
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 5px;
+    top: 50%;
+    transition: box-shadow .25s ease-in-out;
+}
+
+.menu-burger span{
+    transform: translateY(-50%);
+}
+
+.menu-burger span:before{
+    top: 7px;
+}
+
+.menu-burger span:after{
+    top: -7px;
+}
+
+.menu-burger-open span,
+.menu-burger-open span:before,
+.menu-burger-open span:after{
+    background-color: #444;
+}
+
+.menu-burger-open span{
+    animation: fade .1s linear .6s forwards;
+      box-shadow: 0 0 5px 2px rgba(0,255,0,0.7);
+}
+
+.menu-burger-open span:before{
+    animation: left .5s ease-in forwards;
+      box-shadow: 0 0 5px 2px rgba(255,0,0,0.7);
+}
+
+.menu-burger-open span:after{
+    animation: right .7s ease-in forwards;
+      box-shadow: 0 0 5px 2px rgba(0,0,255,0.7);
+}
+
+@keyframes right{
+    0%{
+      top: -15px;
+      left: 0;
+    }
+    30%{
+      top: -15px;
+      left: 75px;
+    }
+    70%{
+      top: -50px;
+      left: 75px;
+      transform: rotate(-225deg);
+    }
+    100%{
+      top: 0;
+      left: 0;
+      transform: rotate(-225deg);
+    }
+  }
+  @keyframes left{
+    0%{
+      top: 15px;
+      left: 0;
+    }
+    30%{
+      top: 15px;
+      left: -75px;
+    }
+    70%{
+      top: -50px;
+      left: -75px;
+      transform: rotate(225deg);
+    }
+    100%{
+      top: 0;
+      left: 0;
+      transform: rotate(225deg);
+    }
+  }
+  @keyframes fade{
+    from{
+      background-color: #777;
+    }
+    to{
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+.active-burger li {
+    display: block;
+}
+
+.active-burger {
+  display: block;
+  animation: fadeIn 1s ease;
+}
+    </style>
+    <script>
+        let hamburger = document.querySelector(".menu-burger") 
+let menu = document.querySelector(".menu-list")
+
+hamburger.onclick = function () {
+  menu.classList.toggle ("active-burger")
+  hamburger.classList.toggle ("hamburger-open")
+}
+    </script>
+    <!-- <script src="burger.js"></script>  -->
+</body>
+</html>
